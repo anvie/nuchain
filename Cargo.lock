@@ -4468,6 +4468,7 @@ dependencies = [
  "pallet-democracy",
  "pallet-did",
  "pallet-elections-phragmen",
+ "pallet-example-offchain-worker",
  "pallet-grandpa",
  "pallet-identity",
  "pallet-im-online",
@@ -5011,22 +5012,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-example"
-version = "2.0.0"
-dependencies = [
- "frame-benchmarking",
- "frame-support 3.0.0",
- "frame-system 3.0.0",
- "pallet-balances",
- "parity-scale-codec",
- "serde",
- "sp-core 3.0.0",
- "sp-io 3.0.0",
- "sp-runtime 3.0.0",
- "sp-std 3.0.0",
-]
-
-[[package]]
 name = "pallet-example-offchain-worker"
 version = "2.0.1"
 dependencies = [
@@ -5040,21 +5025,6 @@ dependencies = [
  "sp-keystore 0.9.0",
  "sp-runtime 3.0.0",
  "sp-std 3.0.0",
-]
-
-[[package]]
-name = "pallet-example-parallel"
-version = "2.0.1"
-dependencies = [
- "frame-support 3.0.0",
- "frame-system 3.0.0",
- "parity-scale-codec",
- "serde",
- "sp-core 3.0.0",
- "sp-io 3.0.0",
- "sp-runtime 3.0.0",
- "sp-std 3.0.0",
- "sp-tasks",
 ]
 
 [[package]]

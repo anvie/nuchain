@@ -75,6 +75,7 @@ use sp_version::NativeVersion;
 use sp_version::RuntimeVersion;
 use static_assertions::const_assert;
 // use sp_core::sr25519;
+use pallet_example_offchain_worker;
 
 #[cfg(any(feature = "std", test))]
 pub use frame_system::Call as SystemCall;
@@ -1094,6 +1095,21 @@ impl pallet_product_tracking::Config for Runtime {
     type Event = Event;
 }
 
+parameter_types! {
+    pub const GracePeriod: u32 = 5;
+    pub const UnsignedInterval: u32 = 128;
+    pub const UnsignedPriority: u32 = 1 << 20;
+}
+
+impl pallet_example_offchain_worker::Config for Runtime {
+    type Event = Event;
+    type AuthorityId = pallet_example_offchain_worker::crypto::TestAuthId;
+    type Call = Call;
+    type GracePeriod = GracePeriod;
+    type UnsignedInterval = UnsignedInterval;
+    type UnsignedPriority = UnsignedPriority;
+}
+
 construct_runtime!(
     pub enum Runtime where
         Block = Block,
@@ -1141,6 +1157,7 @@ construct_runtime!(
         Certificate: pallet_certificate::{Module, Call, Storage, Event<T>},
         ProductRegistry: pallet_product_registry::{Module, Call, Storage, Event<T>},
         ProductTracking: pallet_product_tracking::{Module, Call, Storage, Event<T>},
+        ExampleOffchainWorker: pallet_example_offchain_worker::{Module, Call, Storage, Event<T>, ValidateUnsigned}
     }
 );
 
